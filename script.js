@@ -6,45 +6,50 @@ const navClose = document.querySelector('.nav-close');
 const primaryNav = document.querySelector('.primary-nav');
 const siteHeader = document.querySelector('.site-header');
 
+// ABRIR menu
 if (navToggle && primaryNav) {
-  navToggle.onclick = function () {
+  navToggle.addEventListener('click', () => {
     primaryNav.classList.add('open');
-  };
-}
-if (navClose && primaryNav && navToggle) {
-  navClose.onclick = function () {
-    primaryNav.classList.remove('open');
-    fecharTodos();
-  };
+  });
 }
 
+// FECHAR menu
+if (navClose && primaryNav) {
+  navClose.addEventListener('click', () => {
+    primaryNav.classList.remove('open');
+    fecharTodos();
+  });
+}
+
+
 // 🖱️ COMPUTADOR: passa o mouse → abre submenu
-document.addEventListener('mouseover', function (e) {
+document.addEventListener('mouseover', (e) => {
   if (window.innerWidth > 980) {
-    var item = e.target.closest('.has-dropdown');
+    const item = e.target.closest('.has-dropdown');
     if (item) {
       fecharTodos();
       item.classList.add('open');
     }
   }
 });
-document.addEventListener('mouseout', function (e) {
+
+document.addEventListener('mouseout', (e) => {
   if (window.innerWidth > 980) {
-    var item = e.target.closest('.has-dropdown');
-    if (item) {
-      item.classList.remove('open');
-    }
+    const item = e.target.closest('.has-dropdown');
+    if (item) item.classList.remove('open');
   }
 });
 
+
 // 📱 CELULAR: clica → abre submenu
-document.addEventListener('click', function (e) {
+document.addEventListener('click', (e) => {
   if (window.innerWidth <= 980) {
-    var trigger = e.target.closest('.dropdown-trigger');
+    const trigger = e.target.closest('.dropdown-trigger');
     if (trigger) {
       e.preventDefault();
-      var item = trigger.closest('.has-dropdown');
+      const item = trigger.closest('.has-dropdown');
       if (!item) return;
+      
       if (item.classList.contains('open')) {
         item.classList.remove('open');
       } else {
@@ -55,19 +60,21 @@ document.addEventListener('click', function (e) {
   }
 });
 
+
 // =====================================================
 // ✨ BARRA DE NAVEGAÇÃO — muda estilo ao descer
 // =====================================================
-window.addEventListener('scroll', function () {
-  if (window.scrollY > 60) {
-    siteHeader.classList.add('rolando');
-  } else {
-    siteHeader.classList.remove('rolando');
+window.addEventListener('scroll', () => {
+  if (siteHeader) {
+    window.scrollY > 60 
+      ? siteHeader.classList.add('rolando')
+      : siteHeader.classList.remove('rolando');
   }
 });
 
+
 // =====================================================
-// ⚡ ELEMENTOS APARECENDO — MUITO MAIS RÁPIDO
+// ⚡ ELEMENTOS APARECENDO
 // =====================================================
 const observador = new IntersectionObserver((entradas) => {
   entradas.forEach(entrada => {
@@ -83,13 +90,17 @@ document.querySelectorAll('section, .card, .priest-card, .founder-card, .grid').
   observador.observe(el);
 });
 
+
 // =====================================================
 // 📅 Ano no rodapé
 // =====================================================
-var ano = new Date().getFullYear();
-var anoEl = document.querySelector('.js-year');
-if (anoEl) anoEl.textContent = ano;
+const anoEl = document.querySelector('.js-year');
+if (anoEl) anoEl.textContent = new Date().getFullYear();
 
+
+// =====================================================
+// 🔧 FUNÇÃO UTILITÁRIA
+// =====================================================
 function fecharTodos() {
   document.querySelectorAll('.has-dropdown').forEach(item => {
     item.classList.remove('open');
