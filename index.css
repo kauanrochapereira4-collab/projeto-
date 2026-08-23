@@ -1,6 +1,6 @@
 /* ==========================================================================
    Instituto Missionário Servos de Jesus Salvador — Identidade Digital
-   Paleta: institucional (vinho) / humildade (marrom) / leveza (dourado-creme
+   Paleta: institucional (vinho) / humildade (marrom) / leveza (dourado-creme)
    ========================================================================== */
 :root{
   --vinho:          #6F1610;
@@ -32,7 +32,6 @@ html, body {
   -ms-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
-
 *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
 html{ scroll-behavior:smooth; }
 body{
@@ -158,6 +157,7 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
   border-left-color:var(--dourado);
   padding-left:1.4rem;
 }
+
 .nav-toggle{ display:none; background:none; border:1px solid rgba(243,215,163,.4); padding:.5rem .65rem; font-size:1.1rem; color:#f1e4cc; cursor:pointer; }
 
 /* --- Botão Fechar no Menu Lateral --- */
@@ -424,7 +424,61 @@ footer.site-footer a:hover{ color:var(--dourado-claro); padding-left:4px; transi
 }
 
 /* =====================================================
-   📱 RESPONSIVIDADE — Navbar corrigida + Tela travada
+   ✨ BARRA DE NAVEGAÇÃO ao rolar
+   ===================================================== */
+.site-header.rolando {
+  box-shadow: 0 3px 12px rgba(0,0,0,.25);
+  background: rgba(89, 20, 20, .97) !important;
+  backdrop-filter: blur(6px);
+  transition: all .2s ease;
+}
+
+/* =====================================================
+   ⚡ APARECER RÁPIDO
+   ===================================================== */
+.escondido-antes {
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity .35s ease-out, transform .35s ease-out;
+}
+.apareceu {
+  opacity: 1;
+  transform: translateY(0);
+}
+.card:nth-child(2) { transition-delay: .08s; }
+.card:nth-child(3) { transition-delay: .16s; }
+.card:nth-child(4) { transition-delay: .24s; }
+
+/* =====================================================
+   🛡️ BRASÃO + NOME AO LADO — efeitos
+   ===================================================== */
+.brand {
+  transition: transform .3s ease;
+}
+.brand:hover {
+  transform: translateX(4px);
+}
+.brand-mark {
+  transition: transform .35s ease, filter .35s ease;
+}
+.brand:hover .brand-mark {
+  transform: scale(1.15) rotate(-5deg);
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,.35));
+}
+.brand-text {
+  transition: all .35s ease;
+}
+.brand:hover .brand-text {
+  transform: scale(1.03);
+  letter-spacing: .02em;
+}
+.brand:hover .brand-name {
+  color: var(--dourado) !important;
+  text-shadow: 0 0 10px rgba(205,167,79,.35);
+}
+
+/* =====================================================
+   📱 RESPONSIVIDADE — Navbar corrigida + Botão ✕ aparece
    ===================================================== */
 @media (max-width:980px){
   .nav-toggle{ display:block; }
@@ -449,6 +503,11 @@ footer.site-footer a:hover{ color:var(--dourado-claro); padding-left:4px; transi
     backdrop-filter: none !important;
   }
   nav.primary-nav.open{ transform: translateX(0); }
+
+  /* ✅ BOTÃO ✕ APARECE QUANDO O MENU ESTÁ ABERTO — FALTAVA ISSO! */
+  nav.primary-nav.open .nav-close {
+    display: block !important;
+  }
 
   nav.primary-nav ul{ flex-direction: column; align-items: stretch; gap: 0.25rem; }
   nav.primary-nav > ul > li{ width: 100%; }
@@ -483,7 +542,6 @@ footer.site-footer a:hover{ color:var(--dourado-claro); padding-left:4px; transi
     margin-top: .3rem;
   }
   .has-dropdown > a::after{ float: right; }
-
   .dropdown a{ 
     color: #f8f0dc !important; 
     border-left-color: transparent;
@@ -567,58 +625,4 @@ footer.site-footer a:hover{ color:var(--dourado-claro); padding-left:4px; transi
 img, .container, section, .card {
   max-width: 100%;
   box-sizing: border-box;
-}
-
-/* =====================================================
-   ✨ BARRA DE NAVEGAÇÃO ao rolar
-   ===================================================== */
-.site-header.rolando {
-  box-shadow: 0 3px 12px rgba(0,0,0,.25);
-  background: rgba(89, 20, 20, .97) !important;
-  backdrop-filter: blur(6px);
-  transition: all .2s ease;
-}
-
-/* =====================================================
-   ⚡ APARECER RÁPIDO
-   ===================================================== */
-.escondido-antes {
-  opacity: 0;
-  transform: translateY(15px);
-  transition: opacity .35s ease-out, transform .35s ease-out;
-}
-.apareceu {
-  opacity: 1;
-  transform: translateY(0);
-}
-.card:nth-child(2) { transition-delay: .08s; }
-.card:nth-child(3) { transition-delay: .16s; }
-.card:nth-child(4) { transition-delay: .24s; }
-
-/* =====================================================
-   🛡️ BRASÃO + NOME AO LADO — efeitos
-   ===================================================== */
-.brand {
-  transition: transform .3s ease;
-}
-.brand:hover {
-  transform: translateX(4px);
-}
-.brand-mark {
-  transition: transform .35s ease, filter .35s ease;
-}
-.brand:hover .brand-mark {
-  transform: scale(1.15) rotate(-5deg);
-  filter: drop-shadow(0 4px 8px rgba(0,0,0,.35));
-}
-.brand-text {
-  transition: all .35s ease;
-}
-.brand:hover .brand-text {
-  transform: scale(1.03);
-  letter-spacing: .02em;
-}
-.brand:hover .brand-name {
-  color: var(--dourado) !important;
-  text-shadow: 0 0 10px rgba(205,167,79,.35);
 }
