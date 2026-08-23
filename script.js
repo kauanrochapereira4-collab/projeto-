@@ -6,50 +6,45 @@ const navClose = document.querySelector('.nav-close');
 const primaryNav = document.querySelector('.primary-nav');
 const siteHeader = document.querySelector('.site-header');
 
-// ABRIR menu
 if (navToggle && primaryNav) {
-  navToggle.addEventListener('click', () => {
+  navToggle.onclick = function () {
     primaryNav.classList.add('open');
-  });
+  };
 }
-
-// FECHAR menu
-if (navClose && primaryNav) {
-  navClose.addEventListener('click', () => {
+if (navClose && primaryNav && navToggle) {
+  navClose.onclick = function () {
     primaryNav.classList.remove('open');
     fecharTodos();
-  });
+  };
 }
 
-
 // 🖱️ COMPUTADOR: passa o mouse → abre submenu
-document.addEventListener('mouseover', (e) => {
+document.addEventListener('mouseover', function (e) {
   if (window.innerWidth > 980) {
-    const item = e.target.closest('.has-dropdown');
+    var item = e.target.closest('.has-dropdown');
     if (item) {
       fecharTodos();
       item.classList.add('open');
     }
   }
 });
-
-document.addEventListener('mouseout', (e) => {
+document.addEventListener('mouseout', function (e) {
   if (window.innerWidth > 980) {
-    const item = e.target.closest('.has-dropdown');
-    if (item) item.classList.remove('open');
+    var item = e.target.closest('.has-dropdown');
+    if (item) {
+      item.classList.remove('open');
+    }
   }
 });
 
-
 // 📱 CELULAR: clica → abre submenu
-document.addEventListener('click', (e) => {
+document.addEventListener('click', function (e) {
   if (window.innerWidth <= 980) {
-    const trigger = e.target.closest('.dropdown-trigger');
+    var trigger = e.target.closest('.dropdown-trigger');
     if (trigger) {
       e.preventDefault();
-      const item = trigger.closest('.has-dropdown');
+      var item = trigger.closest('.has-dropdown');
       if (!item) return;
-      
       if (item.classList.contains('open')) {
         item.classList.remove('open');
       } else {
@@ -60,21 +55,19 @@ document.addEventListener('click', (e) => {
   }
 });
 
-
 // =====================================================
 // ✨ BARRA DE NAVEGAÇÃO — muda estilo ao descer
 // =====================================================
-window.addEventListener('scroll', () => {
-  if (siteHeader) {
-    window.scrollY > 60 
-      ? siteHeader.classList.add('rolando')
-      : siteHeader.classList.remove('rolando');
+window.addEventListener('scroll', function () {
+  if (window.scrollY > 60) {
+    siteHeader.classList.add('rolando');
+  } else {
+    siteHeader.classList.remove('rolando');
   }
 });
 
-
 // =====================================================
-// ⚡ ELEMENTOS APARECENDO
+// ⚡ ELEMENTOS APARECENDO — MUITO MAIS RÁPIDO
 // =====================================================
 const observador = new IntersectionObserver((entradas) => {
   entradas.forEach(entrada => {
@@ -90,17 +83,13 @@ document.querySelectorAll('section, .card, .priest-card, .founder-card, .grid').
   observador.observe(el);
 });
 
-
 // =====================================================
 // 📅 Ano no rodapé
 // =====================================================
-const anoEl = document.querySelector('.js-year');
-if (anoEl) anoEl.textContent = new Date().getFullYear();
+var ano = new Date().getFullYear();
+var anoEl = document.querySelector('.js-year');
+if (anoEl) anoEl.textContent = ano;
 
-
-// =====================================================
-// 🔧 FUNÇÃO UTILITÁRIA
-// =====================================================
 function fecharTodos() {
   document.querySelectorAll('.has-dropdown').forEach(item => {
     item.classList.remove('open');
