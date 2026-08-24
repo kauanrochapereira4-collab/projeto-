@@ -2,6 +2,7 @@
    Instituto Missionário Servos de Jesus Salvador — Identidade Digital
    Paleta: institucional (vinho) / humildade (marrom) / leveza (dourado-creme)
    ========================================================================== */
+
 :root{
   --vinho:          #6F1610;
   --vinho-escuro:   #591414;
@@ -21,17 +22,6 @@
   --ui:             "Montserrat", "Helvetica Neue", Arial, sans-serif;
 }
 
-/* =====================================================
-   🔒 TRAVA A TELA — NÃO DEIXA ENCOLHER/REDUZIR
-   ===================================================== */
-html, body {
-  width: 100%;
-  overflow-x: hidden;
-  -webkit-text-size-adjust: 100%;
-  -moz-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-  text-size-adjust: 100%;
-}
 
 *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
 html{ scroll-behavior:smooth; }
@@ -58,23 +48,29 @@ p{ margin:0 0 1em; }
 main{ margin-top:0; padding-top:0; }
 @media (prefers-reduced-motion: reduce){ *{ animation-duration:.001ms !important; transition-duration:.001ms !important; } }
 
-/* --- Cabeçalho / Navegação --- */
+
+/* --- Cabeçalho / Navegação — ESTILO DA IMAGEM --- */
 .site-header{
   position:sticky; top:0; z-index:50;
-  background:var(--vinho-escuro);
-  border-bottom:2px solid var(--dourado);
+  background: var(--vinho); /* Cor de fundo igual à imagem */
+  border-bottom: 3px solid var(--dourado); /* Linha dourada embaixo */
   margin-bottom:0;
+  box-shadow: 0 2px 8px rgba(0,0,0,.15);
 }
 .header-bar{
   display:flex; align-items:center; justify-content:space-between;
-  gap:1.5rem; padding:.6rem 0;
+  gap:1.5rem; padding:.75rem 0; /* Ajuste do espaçamento vertical */
 }
+
+
 .brand{ 
-  display:flex; align-items:center; gap:.9rem; 
+  display:flex; align-items:center; gap:1rem; 
   text-decoration:none;
 }
+
+
 .brand-mark{ 
-  width:52px; height:52px; flex:none; 
+  width:56px; height:56px; flex:none; 
   display:flex; align-items:center; justify-content:center;
   background:transparent;
   border-radius:0;
@@ -85,41 +81,56 @@ main{ margin-top:0; padding-top:0; }
   border-radius:0;
   background:transparent;
 }
+
+
 .brand-text{ 
   display:flex; flex-direction:column; 
-  line-height:1.2;
+  line-height:1.3;
 }
 .brand-text .eyebrow-brand{ 
   display:block; 
   font-family:var(--ui); 
   font-size:.78rem; 
-  color:var(--dourado);
-  font-weight:500; 
+  color: var(--dourado-claro); /* Texto superior em creme-dourado */
+  font-weight:400; 
   line-height:1.3;
+  letter-spacing: .015em;
 }
 .brand-text .brand-name{ 
   font-family:var(--ui); 
-  font-weight:700; 
-  font-size:.98rem; 
-  color:#fff;
+  font-weight:600; 
+  font-size:.95rem; 
+  color: #fff;
   letter-spacing:.02em; 
+  text-transform: uppercase;
 }
-nav.primary-nav{ display:flex; align-items:center; gap:.2rem; }
-nav.primary-nav ul{ list-style:none; display:flex; gap:.1rem; margin:0; padding:0; align-items:center; }
+
+
+/* --- Menu de Navegação --- */
+nav.primary-nav{ display:flex; align-items:center; gap:.3rem; }
+nav.primary-nav ul{ list-style:none; display:flex; gap:.2rem; margin:0; padding:0; align-items:center; }
 nav.primary-nav > ul > li{ position:relative; }
 nav.primary-nav > ul > li > a{
-  display:block; padding:.7rem 1rem; font-family:var(--ui); font-size:.88rem; font-weight:500;
-  letter-spacing:.01em; color:#fff; border-bottom:2px solid transparent; 
+  display:block; padding:.8rem 1.1rem; font-family:var(--ui); font-size:.85rem; font-weight:500;
+  letter-spacing:.015em; color: var(--creme); border-bottom: 2px solid transparent; 
   transition:all .25s ease; cursor:pointer;
+  text-transform: uppercase;
 }
-nav.primary-nav > ul > li > a:hover{ color:var(--dourado); border-bottom-color:var(--dourado); }
+nav.primary-nav > ul > li > a:hover{ 
+  color: var(--dourado); 
+  border-bottom-color: var(--dourado); 
+}
+
+
 nav.primary-nav > ul > li.active > a,
 nav.primary-nav > ul > li.has-dropdown.active > a{ 
-  background:transparent; 
-  color:var(--dourado); 
-  font-weight:600; 
-  border-bottom:2px solid var(--dourado); 
+  background: transparent; 
+  color: var(--dourado); 
+  font-weight: 600; 
+  border-bottom: 2px solid var(--dourado); 
 }
+
+
 nav.primary-nav > ul > li.has-dropdown > a::after{ 
   content:" ▾"; 
   font-size:.7em; 
@@ -131,9 +142,10 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
   transform:rotate(180deg);
 }
 
+
 /* --- Dropdown — Abre SÓ ao Clicar --- */
 .dropdown{
-  position:absolute; top:100%; left:0; min-width:260px; 
+  position:absolute; top:100%; right:0; min-width:260px; 
   background:linear-gradient(160deg, #fff9f5 0%, #ffffff 100%);
   border:1px solid var(--dourado-claro); 
   box-shadow:0 10px 30px rgba(95, 22, 16, .22); 
@@ -142,9 +154,13 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
   transition:opacity .25s ease, transform .25s ease, visibility .25s;
   z-index:100;
 }
+
+
 .has-dropdown.open .dropdown{ 
   opacity:1; visibility:visible; transform:translateY(0); 
 }
+
+
 .dropdown a{ 
   display:block; padding:.85rem 1.2rem; font-family:var(--ui); 
   font-size:.9rem; color:var(--marrom); 
@@ -158,7 +174,10 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
   border-left-color:var(--dourado);
   padding-left:1.4rem;
 }
+
+
 .nav-toggle{ display:none; background:none; border:1px solid rgba(243,215,163,.4); padding:.5rem .65rem; font-size:1.1rem; color:#f1e4cc; cursor:pointer; }
+
 
 /* --- Botão Fechar no Menu Lateral --- */
 .nav-close{
@@ -174,16 +193,18 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
   border-radius:6px;
   cursor:pointer;
   transition:all .25s ease;
-  z-index:110;
 }
 .nav-close:hover{
   background:var(--dourado);
   color:var(--vinho-escuro);
 }
 
+
 /* ==========================================================
-   HERO — CAIXA MENOR E MAIS COMPACTA ✅
+   HERO
    ========================================================== */
+
+
 .home-hero {
   position: relative;
   width: 100%;
@@ -193,6 +214,8 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
   background: var(--creme);
   padding-bottom: 10px;
 }
+
+
 .home-hero-photo {
   position: relative;
   width: 100%;
@@ -203,6 +226,8 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
   border-bottom-left-radius: 50% 12%;
   border-bottom-right-radius: 50% 12%;
 }
+
+
 .home-hero-photo-img {
   position: absolute;
   top: 0;
@@ -214,6 +239,8 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
   display: block;
   z-index: 1;
 }
+
+
 .home-hero-photo::after {
   content: "";
   position: absolute;
@@ -232,6 +259,8 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
   border-bottom-left-radius: 50% 12%;
   border-bottom-right-radius: 50% 12%;
 }
+
+
 .home-hero-box {
   position: absolute;
   top: 78%;
@@ -242,64 +271,65 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
   animation: fadeInUp 1s ease-out forwards;
   opacity: 0;
 }
+
+
 @keyframes fadeInUp {
   to {
     opacity: 1;
     transform: translate(-50%, -50%) translateY(0);
   }
 }
+
+
 .home-hero-box-inner {
   width: 100%;
   background: linear-gradient(
     145deg,
-    rgba(90, 16, 22, 0.88),
-    rgba(60, 10, 15, 0.92)
+    rgba(90, 16, 22, 0.85),
+    rgba(60, 10, 15, 0.90)
   );
   color: #fff;
   text-align: center;
-  padding: 12px 16px; /* ✅ CAIXA MENOR — antes 18px 20px */
-  border-radius: 10px; /* ✅ Cantos menores */
+  padding: 18px 20px;
+  border-radius: 14px;
   border: 1px solid var(--dourado);
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(4px);
-  transition: all .4s ease !important;
 }
-.home-hero-box-inner:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 12px 35px rgba(111, 22, 16, .55), inset 0 0 0 1px rgba(205,167,79,.3);
-  border-color: var(--ouro-brilhante);
-}
-.home-hero-box-inner:hover h1 {
-  color: var(--dourado-claro);
-  text-shadow: 0 0 12px rgba(205,167,79,.4);
-}
+
+
 .home-hero-box-inner h1 {
   font-family: var(--display);
   color: #fff;
-  font-size: clamp(0.9rem, 1.6vw, 1.1rem); /* ✅ FONTE MENOR */
-  margin: 0 0 0.3rem;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  margin: 0 0 0.4rem;
   letter-spacing: 0.03em;
   line-height: 1.3;
   font-weight: 600;
   text-transform: uppercase;
 }
+
+
 .hero-text {
   font-family: var(--serif);
   font-style: italic;
   color: var(--dourado-claro);
-  font-size: 0.82rem; /* ✅ FONTE MENOR — era 0.92rem */
-  margin-bottom: 0.15rem;
+  font-size: 0.92rem;
+  margin-bottom: 0.35rem;
   line-height: 1.5;
 }
+
+
 .hero-meta {
   font-family: var(--serif);
   font-style: italic;
-  font-size: 0.72rem; /* ✅ FONTE MENOR — era 0.8rem */
+  font-size: 0.8rem;
   color: #e9d4b8;
   margin-bottom: 0;
   opacity: 0.92;
   line-height: 1.4;
 }
+
 
 /* --- Cartões: Prior Geral e Fundador --- */
 .prior-message{ padding-top:0; }
@@ -310,22 +340,32 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
 }
 .priest-card{ border-left:5px solid var(--dourado); }
 .founder-card{ border-left:5px solid var(--marrom); background:linear-gradient(90deg,#fff9f5 0%,#ffffff 100%); }
+
+
 .priest-photo{
   width:150px; flex:none; border-radius:6px; overflow:hidden;
   border:3px solid var(--dourado-claro); box-shadow:0 2px 8px rgba(0,0,0,.15);
   margin-top: 2rem;
 }
+
+
 .founder-photo{
   width:150px; flex:none; border-radius:6px; overflow:hidden;
   border:3px solid var(--dourado-claro); box-shadow:0 2px 8px rgba(0,0,0,.15);
 }
+
+
 .priest-photo img, .founder-photo img{ width:100%; display:block; height:100%; object-fit:cover; }
+
+
 .priest-content h3{
   color:var(--marrom); font-family:var(--display); font-size:1.15rem; margin-bottom:.8rem;
   padding-bottom:.5rem; border-bottom:2px dotted var(--dourado-claro);
 }
 .priest-content p{ margin-bottom:.85rem; font-size:.98rem; line-height:1.65; }
 .prior-blessing{ margin-top:.8rem; font-weight:600; color:var(--marrom); }
+
+
 .card-quote{
   font-style:italic; color:var(--marrom); margin:.4rem 0 1.2rem; padding:.8rem 1rem;
   border-left:4px solid var(--dourado); border-radius:0 6px 6px 0;
@@ -338,11 +378,16 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
 }
 .founder-sub{ font-size:.85rem; color:#777; margin-top:.2rem; }
 
+
 /* --- Seções e Grades --- */
 section{ padding:4rem 0; }
 .section-block{ padding-top:1rem; }
+
+
 .grid{ display:grid; gap:1.8rem; }
 .grid-3{ grid-template-columns:repeat(3,1fr); }
+
+
 .card{
   background:#fff; border:none; border-radius:8px; padding:1.6rem;
   box-shadow:0 3px 10px rgba(67,40,24,.10); border-top:4px solid var(--dourado);
@@ -352,10 +397,11 @@ section{ padding:4rem 0; }
 .card h3{ font-size:1.08rem; color:var(--marrom); margin-bottom:.8rem; }
 .card p{ font-size:.95rem; line-height:1.6; }
 
+
 /* --- Botões --- */
 .btn{
   display:inline-block; font-family:var(--ui); font-weight:600; font-size:.88rem; letter-spacing:.01em;
-  padding:.75rem 1.4rem; border:none; border-radius:5px; color:#fff; background:var(--marrom)); cursor:pointer;
+  padding:.75rem 1.4rem; border:none; border-radius:5px; color:#fff; background:var(--marrom); cursor:pointer;
   transition:all .3s ease;
 }
 .btn:hover{ background:#5a3622; box-shadow:0 3px 8px rgba(67,40,24,.3); }
@@ -367,6 +413,7 @@ section{ padding:4rem 0; }
   background:linear-gradient(135deg, var(--ouro-brilhante) 0%, var(--dourado) 100%); 
   color:var(--marrom); 
 }
+
 
 /* --- Rodapé --- */
 footer.site-footer{ 
@@ -381,13 +428,18 @@ footer.site-footer h4{
 footer.site-footer p{ font-size:.9rem; line-height:1.6; }
 footer.site-footer a{ color:#F0E6CC; font-size:.9rem; }
 footer.site-footer a:hover{ color:var(--dourado-claro); padding-left:4px; transition:.2s ease; }
+
+
 .footer-grid{ display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:2rem; }
 .footer-grid ul{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:.55rem; }
+
+
 .footer-bottom{ 
   margin-top:2.4rem; padding-top:1.4rem; border-top:1px solid rgba(255,255,255,.14); 
   font-family:var(--ui); font-size:.78rem; color:#e9d4b8; 
   display:flex; justify-content:space-between; flex-wrap:wrap; gap:.6rem; 
 }
+
 
 /* =====================================================
    📱 ÍCONES DAS REDES SOCIAIS
@@ -397,6 +449,8 @@ footer.site-footer a:hover{ color:var(--dourado-claro); padding-left:4px; transi
   gap: 12px;
   margin-top: 1rem;
 }
+
+
 .social-row a {
   width: 28px;
   height: 28px;
@@ -411,6 +465,8 @@ footer.site-footer a:hover{ color:var(--dourado-claro); padding-left:4px; transi
   font-size: 0 !important;
   transition: transform .3s ease;
 }
+
+
 .social-row a img {
   width: 28px !important;
   height: 28px !important;
@@ -419,121 +475,109 @@ footer.site-footer a:hover{ color:var(--dourado-claro); padding-left:4px; transi
   margin: 0 !important;
   padding: 0 !important;
 }
+
+
 .social-row a:hover {
   transform: scale(1.15);
 }
 
+
 /* =====================================================
-   📱 RESPONSIVIDADE — Navbar corrigida + Tela travada
+   📱 RESPONSIVIDADE — Tudo proporcional
    ===================================================== */
+
+
 @media (max-width:980px){
   .nav-toggle{ display:block; }
 
-  /* ✅ MENU LATERAL — cor sólida, tamanho correto */
+  /* Menu lateral — mesma cor da barra */
   nav.primary-nav{
-    position: fixed; 
-    top: 0; 
-    right: 0; 
-    bottom: 0; 
-    width: min(300px, 82%); 
-    height: 100vh;
-    background: var(--vinho-escuro) !important;
-    flex-direction: column; 
-    align-items: stretch;
-    transform: translateX(100%); 
-    transition: transform .28s ease; 
-    padding: 5rem 1.2rem 2.5rem;
-    box-shadow: -5px 0 25px rgba(0,0,0,.35);
-    overflow-y: auto;
-    overflow-x: hidden;
-    backdrop-filter: none !important;
+    position:fixed; top:0; right:0; bottom:0; width:min(320px,86%); height:100vh;
+    background:var(--vinho);
+    flex-direction:column; align-items:stretch;
+    transform:translateX(100%); transition:transform .25s ease; 
+    padding:5rem 1.2rem 2rem;
+    box-shadow:var(--sombra); overflow:auto;
   }
-  nav.primary-nav.open{ transform: translateX(0); }
+  nav.primary-nav.open{ transform:translateX(0); }
 
-  nav.primary-nav ul{ flex-direction: column; align-items: stretch; gap: 0.25rem; }
-  nav.primary-nav > ul > li{ width: 100%; }
-  nav.primary-nav > ul > li > a{ 
-    border-bottom: 1px solid rgba(205,167,79,.18);
-    padding: .9rem 1rem;
-    font-size: .92rem;
-  }
+  /* Botão fechar */
+  .nav-close{ display:block; }
 
-  /* ✅ SUBMENU — cor de fundo correta e legível */
+  nav.primary-nav ul{ flex-direction:column; align-items:stretch; }
+  nav.primary-nav > ul > li > a{ border-bottom:1px solid rgba(205,167,79,.15); }
+
+  /* Submenu no celular */
   .dropdown{ 
-    position: static; 
-    max-height: 0; 
-    opacity: 0; 
-    visibility: hidden; 
-    transform: translateY(0); 
-    box-shadow: none; 
-    border: none; 
-    background: rgba(0,0,0,.20) !important;
-    padding-left: .8rem; 
-    padding-top: 0; 
-    margin: 0;
-    overflow: hidden;
-    transition: max-height .28s ease, opacity .22s ease, padding .28s ease;
-    border-radius: 6px;
+    position:static; 
+    max-height:0; 
+    opacity:0; 
+    visibility:hidden; 
+    transform:translateY(0); 
+    box-shadow:none; 
+    border:none; 
+    background:rgba(0,0,0,.15);
+    padding-left:.8rem; 
+    padding-top:0; 
+    margin:0;
+    overflow:hidden;
+    transition:max-height .25s ease, opacity .2s ease, padding .25s ease;
   }
   .has-dropdown.open .dropdown{ 
-    max-height: 600px; 
-    opacity: 1; 
-    visibility: visible; 
-    padding-top: .5rem;
-    margin-top: .3rem;
+    max-height:500px; 
+    opacity:1; 
+    visibility:visible; 
+    padding-top:.5rem;
   }
-  .has-dropdown > a::after{ float: right; }
+  .has-dropdown > a::after{ float:right; }
 
-  .dropdown a{ 
-    color: #f8f0dc !important; 
-    border-left-color: transparent;
-    padding: .8rem 1rem;
-    font-size: .9rem;
-  }
+  .dropdown a{ color:#f1e4cc; border-left-color:transparent; }
   .dropdown a:hover{ 
-    background: rgba(205,167,79,.25); 
-    color: #fff !important; 
-    border-left-color: var(--dourado);
+    background:rgba(205,167,79,.25); 
+    color:#fff; 
+    border-left-color:var(--dourado);
   }
 }
+
 
 @media (max-width:860px){ 
   .grid-3{ grid-template-columns:1fr 1fr; } 
   .footer-grid{ grid-template-columns:1fr 1fr; } 
 }
 
-@media (max-width:640px){
-  /* ✅ CABEÇALHO — NÃO QUEBRAR LINHA */
-  .header-bar {
-    flex-wrap: nowrap;
-    gap: 0.6rem;
-    padding: 0.7rem 0;
-  }
-  .brand-text .eyebrow-brand { font-size: 0.75rem; }
-  .brand-text .brand-name { font-size: 0.95rem; }
-  .brand-mark { width: 48px; height: 48px; }
 
-  /* ✅ HERO NO CELULAR — TAMBÉM MENOR */
+@media (max-width:640px){
+  /* Cabeçalho proporcional */
+  .header-bar {
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    padding: 0.8rem 0;
+  }
+  .brand-text .eyebrow-brand { font-size: 0.7rem; }
+  .brand-text .brand-name { font-size: 0.9rem; }
+  .brand-mark { width: 44px; height: 44px; }
+
+  /* Caixa da foto proporcional */
   .home-hero-box {
-    top: 75%;
+    top: 72%;
     width: 92%;
   }
   .home-hero-box-inner {
-    padding: 10px 14px; /* ✅ Mais compacto */
-    border-radius: 10px;
+    padding: 14px 16px;
+    border-radius: 12px;
   }
   .home-hero-box-inner h1 {
-    font-size: 0.95rem;
+    font-size: 1rem;
   }
-  .hero-text { font-size: 0.8rem; }
-  .hero-meta { font-size: 0.7rem; }
+  .hero-text { font-size: 0.85rem; }
+  .hero-meta { font-size: 0.75rem; }
 
-  /* ✅ CARTÕES */
+  /* Cartões do Padre e Fundador */
   .priest-card, .founder-card {
     flex-direction: column;
     text-align: center;
     gap: 1rem;
-    padding: 1.4rem;
+    padding: 1.2rem;
   }
   .priest-photo, .founder-photo {
     margin: 0 auto;
@@ -541,20 +585,20 @@ footer.site-footer a:hover{ color:var(--dourado-claro); padding-left:4px; transi
     height: 120px;
   }
 
-  /* ✅ GRIDS — 1 coluna */
-  .grid-3 { grid-template-columns: 1fr; gap: 1.3rem; }
+  /* Grids em 1 coluna */
+  .grid-3 { grid-template-columns: 1fr; gap: 1.2rem; }
   .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
 
-  /* ✅ SEÇÕES */
-  section { padding: 2.2rem 0; }
+  /* Espaçamento das seções */
+  section { padding: 2rem 0; }
 
-  /* ✅ BOTÕES */
+  /* Botões proporcionais */
   .btn {
-    padding: 0.7rem 1.3rem;
-    font-size: 0.88rem;
+    padding: 0.65rem 1.2rem;
+    font-size: 0.85rem;
   }
 
-  /* ✅ RODAPÉ */
+  /* Rodapé */
   footer.site-footer { padding: 2rem 0 1.2rem; }
   .footer-bottom {
     flex-direction: column;
@@ -563,21 +607,24 @@ footer.site-footer a:hover{ color:var(--dourado-claro); padding-left:4px; transi
   }
 }
 
+
 /* Garante que NADA estoura a tela */
 img, .container, section, .card {
   max-width: 100%;
   box-sizing: border-box;
 }
 
+
 /* =====================================================
    ✨ BARRA DE NAVEGAÇÃO ao rolar
    ===================================================== */
 .site-header.rolando {
   box-shadow: 0 3px 12px rgba(0,0,0,.25);
-  background: rgba(89, 20, 20, .97) !important;
+  background: rgba(111, 22, 16, .97) !important;
   backdrop-filter: blur(6px);
   transition: all .2s ease;
 }
+
 
 /* =====================================================
    ⚡ APARECER RÁPIDO
@@ -587,13 +634,19 @@ img, .container, section, .card {
   transform: translateY(15px);
   transition: opacity .35s ease-out, transform .35s ease-out;
 }
+
+
 .apareceu {
   opacity: 1;
   transform: translateY(0);
 }
+
+
+/* Cards aparecem em sequência */
 .card:nth-child(2) { transition-delay: .08s; }
 .card:nth-child(3) { transition-delay: .16s; }
 .card:nth-child(4) { transition-delay: .24s; }
+
 
 /* =====================================================
    🛡️ BRASÃO + NOME AO LADO — efeitos
@@ -604,6 +657,8 @@ img, .container, section, .card {
 .brand:hover {
   transform: translateX(4px);
 }
+
+
 .brand-mark {
   transition: transform .35s ease, filter .35s ease;
 }
@@ -611,6 +666,8 @@ img, .container, section, .card {
   transform: scale(1.15) rotate(-5deg);
   filter: drop-shadow(0 4px 8px rgba(0,0,0,.35));
 }
+
+
 .brand-text {
   transition: all .35s ease;
 }
@@ -621,4 +678,23 @@ img, .container, section, .card {
 .brand:hover .brand-name {
   color: var(--dourado) !important;
   text-shadow: 0 0 10px rgba(205,167,79,.35);
+}
+
+
+/* =====================================================
+   📦 CAIXA DA FOTO — efeitos
+   ===================================================== */
+.home-hero-box-inner {
+  transition: all .4s ease !important;
+}
+.home-hero-box-inner:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 35px rgba(111, 22, 16, .55), inset 0 0 0 1px rgba(205,167,79,.3);
+  border-color: var(--ouro-brilhante);
+}
+
+
+.home-hero-box-inner:hover h1 {
+  color: var(--dourado-claro);
+  text-shadow: 0 0 12px rgba(205,167,79,.4);
 }
