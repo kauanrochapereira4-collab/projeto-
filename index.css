@@ -22,7 +22,6 @@
   --ui:             "Montserrat", "Helvetica Neue", Arial, sans-serif;
 }
 
-
 *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
 html{ scroll-behavior:smooth; }
 body{
@@ -48,29 +47,25 @@ p{ margin:0 0 1em; }
 main{ margin-top:0; padding-top:0; }
 @media (prefers-reduced-motion: reduce){ *{ animation-duration:.001ms !important; transition-duration:.001ms !important; } }
 
-
-/* --- Cabeçalho / Navegação — ESTILO DA IMAGEM --- */
+/* --- Cabeçalho / Navegação --- */
 .site-header{
   position:sticky; top:0; z-index:50;
-  background: var(--vinho); /* Cor de fundo igual à imagem */
-  border-bottom: 3px solid var(--dourado); /* Linha dourada embaixo */
+  background:var(--vinho-escuro);
+  border-bottom:2px solid var(--dourado);
   margin-bottom:0;
-  box-shadow: 0 2px 8px rgba(0,0,0,.15);
 }
 .header-bar{
   display:flex; align-items:center; justify-content:space-between;
-  gap:1.5rem; padding:.75rem 0; /* Ajuste do espaçamento vertical */
+  gap:1.5rem; padding:.6rem 0;
 }
 
-
 .brand{ 
-  display:flex; align-items:center; gap:1rem; 
+  display:flex; align-items:center; gap:.9rem; 
   text-decoration:none;
 }
 
-
 .brand-mark{ 
-  width:56px; height:56px; flex:none; 
+  width:52px; height:52px; flex:none; 
   display:flex; align-items:center; justify-content:center;
   background:transparent;
   border-radius:0;
@@ -82,54 +77,43 @@ main{ margin-top:0; padding-top:0; }
   background:transparent;
 }
 
-
 .brand-text{ 
   display:flex; flex-direction:column; 
-  line-height:1.3;
+  line-height:1.2;
 }
 .brand-text .eyebrow-brand{ 
   display:block; 
   font-family:var(--ui); 
   font-size:.78rem; 
-  color: var(--dourado-claro); /* Texto superior em creme-dourado */
-  font-weight:400; 
+  color:var(--dourado);
+  font-weight:500; 
   line-height:1.3;
-  letter-spacing: .015em;
 }
 .brand-text .brand-name{ 
   font-family:var(--ui); 
-  font-weight:600; 
-  font-size:.95rem; 
-  color: #fff;
+  font-weight:700; 
+  font-size:.98rem; 
+  color:#fff;
   letter-spacing:.02em; 
-  text-transform: uppercase;
 }
 
-
-/* --- Menu de Navegação --- */
-nav.primary-nav{ display:flex; align-items:center; gap:.3rem; }
-nav.primary-nav ul{ list-style:none; display:flex; gap:.2rem; margin:0; padding:0; align-items:center; }
+nav.primary-nav{ display:flex; align-items:center; gap:.2rem; }
+nav.primary-nav ul{ list-style:none; display:flex; gap:.1rem; margin:0; padding:0; align-items:center; }
 nav.primary-nav > ul > li{ position:relative; }
 nav.primary-nav > ul > li > a{
-  display:block; padding:.8rem 1.1rem; font-family:var(--ui); font-size:.85rem; font-weight:500;
-  letter-spacing:.015em; color: var(--creme); border-bottom: 2px solid transparent; 
+  display:block; padding:.7rem 1rem; font-family:var(--ui); font-size:.88rem; font-weight:500;
+  letter-spacing:.01em; color:#fff; border-bottom:2px solid transparent; 
   transition:all .25s ease; cursor:pointer;
-  text-transform: uppercase;
 }
-nav.primary-nav > ul > li > a:hover{ 
-  color: var(--dourado); 
-  border-bottom-color: var(--dourado); 
-}
-
+nav.primary-nav > ul > li > a:hover{ color:var(--dourado); border-bottom-color:var(--dourado); }
 
 nav.primary-nav > ul > li.active > a,
 nav.primary-nav > ul > li.has-dropdown.active > a{ 
-  background: transparent; 
-  color: var(--dourado); 
-  font-weight: 600; 
-  border-bottom: 2px solid var(--dourado); 
+  background:transparent; 
+  color:var(--dourado); 
+  font-weight:600; 
+  border-bottom:2px solid var(--dourado); 
 }
-
 
 nav.primary-nav > ul > li.has-dropdown > a::after{ 
   content:" ▾"; 
@@ -142,10 +126,9 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
   transform:rotate(180deg);
 }
 
-
 /* --- Dropdown — Abre SÓ ao Clicar --- */
 .dropdown{
-  position:absolute; top:100%; right:0; min-width:260px; 
+  position:absolute; top:100%; left:0; min-width:260px; 
   background:linear-gradient(160deg, #fff9f5 0%, #ffffff 100%);
   border:1px solid var(--dourado-claro); 
   box-shadow:0 10px 30px rgba(95, 22, 16, .22); 
@@ -155,11 +138,9 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
   z-index:100;
 }
 
-
 .has-dropdown.open .dropdown{ 
   opacity:1; visibility:visible; transform:translateY(0); 
 }
-
 
 .dropdown a{ 
   display:block; padding:.85rem 1.2rem; font-family:var(--ui); 
@@ -175,9 +156,7 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
   padding-left:1.4rem;
 }
 
-
 .nav-toggle{ display:none; background:none; border:1px solid rgba(243,215,163,.4); padding:.5rem .65rem; font-size:1.1rem; color:#f1e4cc; cursor:pointer; }
-
 
 /* --- Botão Fechar no Menu Lateral --- */
 .nav-close{
@@ -199,11 +178,9 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
   color:var(--vinho-escuro);
 }
 
-
 /* ==========================================================
    HERO
    ========================================================== */
-
 
 .home-hero {
   position: relative;
@@ -214,7 +191,6 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
   background: var(--creme);
   padding-bottom: 10px;
 }
-
 
 .home-hero-photo {
   position: relative;
@@ -227,7 +203,6 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
   border-bottom-right-radius: 50% 12%;
 }
 
-
 .home-hero-photo-img {
   position: absolute;
   top: 0;
@@ -239,7 +214,6 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
   display: block;
   z-index: 1;
 }
-
 
 .home-hero-photo::after {
   content: "";
@@ -260,7 +234,6 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
   border-bottom-right-radius: 50% 12%;
 }
 
-
 .home-hero-box {
   position: absolute;
   top: 78%;
@@ -272,14 +245,12 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
   opacity: 0;
 }
 
-
 @keyframes fadeInUp {
   to {
     opacity: 1;
     transform: translate(-50%, -50%) translateY(0);
   }
 }
-
 
 .home-hero-box-inner {
   width: 100%;
@@ -297,7 +268,6 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
   backdrop-filter: blur(4px);
 }
 
-
 .home-hero-box-inner h1 {
   font-family: var(--display);
   color: #fff;
@@ -309,7 +279,6 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
   text-transform: uppercase;
 }
 
-
 .hero-text {
   font-family: var(--serif);
   font-style: italic;
@@ -318,7 +287,6 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
   margin-bottom: 0.35rem;
   line-height: 1.5;
 }
-
 
 .hero-meta {
   font-family: var(--serif);
@@ -330,7 +298,6 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
   line-height: 1.4;
 }
 
-
 /* --- Cartões: Prior Geral e Fundador --- */
 .prior-message{ padding-top:0; }
 .priest-card, .founder-card{
@@ -341,22 +308,18 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
 .priest-card{ border-left:5px solid var(--dourado); }
 .founder-card{ border-left:5px solid var(--marrom); background:linear-gradient(90deg,#fff9f5 0%,#ffffff 100%); }
 
-
 .priest-photo{
   width:150px; flex:none; border-radius:6px; overflow:hidden;
   border:3px solid var(--dourado-claro); box-shadow:0 2px 8px rgba(0,0,0,.15);
   margin-top: 2rem;
 }
 
-
 .founder-photo{
   width:150px; flex:none; border-radius:6px; overflow:hidden;
   border:3px solid var(--dourado-claro); box-shadow:0 2px 8px rgba(0,0,0,.15);
 }
 
-
 .priest-photo img, .founder-photo img{ width:100%; display:block; height:100%; object-fit:cover; }
-
 
 .priest-content h3{
   color:var(--marrom); font-family:var(--display); font-size:1.15rem; margin-bottom:.8rem;
@@ -364,7 +327,6 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
 }
 .priest-content p{ margin-bottom:.85rem; font-size:.98rem; line-height:1.65; }
 .prior-blessing{ margin-top:.8rem; font-weight:600; color:var(--marrom); }
-
 
 .card-quote{
   font-style:italic; color:var(--marrom); margin:.4rem 0 1.2rem; padding:.8rem 1rem;
@@ -378,15 +340,12 @@ nav.primary-nav > ul > li.has-dropdown.open > a::after{
 }
 .founder-sub{ font-size:.85rem; color:#777; margin-top:.2rem; }
 
-
 /* --- Seções e Grades --- */
 section{ padding:4rem 0; }
 .section-block{ padding-top:1rem; }
 
-
 .grid{ display:grid; gap:1.8rem; }
 .grid-3{ grid-template-columns:repeat(3,1fr); }
-
 
 .card{
   background:#fff; border:none; border-radius:8px; padding:1.6rem;
@@ -396,7 +355,6 @@ section{ padding:4rem 0; }
 .card:hover{ transform:translateY(-4px); box-shadow:0 5px 15px rgba(67,40,24,.18); }
 .card h3{ font-size:1.08rem; color:var(--marrom); margin-bottom:.8rem; }
 .card p{ font-size:.95rem; line-height:1.6; }
-
 
 /* --- Botões --- */
 .btn{
@@ -414,7 +372,6 @@ section{ padding:4rem 0; }
   color:var(--marrom); 
 }
 
-
 /* --- Rodapé --- */
 footer.site-footer{ 
   background:var(--vinho); color:#e9d4b8; padding:3.2rem 0 1.6rem; 
@@ -429,17 +386,14 @@ footer.site-footer p{ font-size:.9rem; line-height:1.6; }
 footer.site-footer a{ color:#F0E6CC; font-size:.9rem; }
 footer.site-footer a:hover{ color:var(--dourado-claro); padding-left:4px; transition:.2s ease; }
 
-
 .footer-grid{ display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:2rem; }
 .footer-grid ul{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:.55rem; }
-
 
 .footer-bottom{ 
   margin-top:2.4rem; padding-top:1.4rem; border-top:1px solid rgba(255,255,255,.14); 
   font-family:var(--ui); font-size:.78rem; color:#e9d4b8; 
   display:flex; justify-content:space-between; flex-wrap:wrap; gap:.6rem; 
 }
-
 
 /* =====================================================
    📱 ÍCONES DAS REDES SOCIAIS
@@ -449,7 +403,6 @@ footer.site-footer a:hover{ color:var(--dourado-claro); padding-left:4px; transi
   gap: 12px;
   margin-top: 1rem;
 }
-
 
 .social-row a {
   width: 28px;
@@ -466,7 +419,6 @@ footer.site-footer a:hover{ color:var(--dourado-claro); padding-left:4px; transi
   transition: transform .3s ease;
 }
 
-
 .social-row a img {
   width: 28px !important;
   height: 28px !important;
@@ -476,16 +428,13 @@ footer.site-footer a:hover{ color:var(--dourado-claro); padding-left:4px; transi
   padding: 0 !important;
 }
 
-
 .social-row a:hover {
   transform: scale(1.15);
 }
 
-
 /* =====================================================
    📱 RESPONSIVIDADE — Tudo proporcional
    ===================================================== */
-
 
 @media (max-width:980px){
   .nav-toggle{ display:block; }
@@ -493,7 +442,7 @@ footer.site-footer a:hover{ color:var(--dourado-claro); padding-left:4px; transi
   /* Menu lateral — mesma cor da barra */
   nav.primary-nav{
     position:fixed; top:0; right:0; bottom:0; width:min(320px,86%); height:100vh;
-    background:var(--vinho);
+    background:var(--vinho-escuro);
     flex-direction:column; align-items:stretch;
     transform:translateX(100%); transition:transform .25s ease; 
     padding:5rem 1.2rem 2rem;
@@ -539,12 +488,10 @@ footer.site-footer a:hover{ color:var(--dourado-claro); padding-left:4px; transi
   }
 }
 
-
 @media (max-width:860px){ 
   .grid-3{ grid-template-columns:1fr 1fr; } 
   .footer-grid{ grid-template-columns:1fr 1fr; } 
 }
-
 
 @media (max-width:640px){
   /* Cabeçalho proporcional */
@@ -607,24 +554,21 @@ footer.site-footer a:hover{ color:var(--dourado-claro); padding-left:4px; transi
   }
 }
 
-
 /* Garante que NADA estoura a tela */
 img, .container, section, .card {
   max-width: 100%;
   box-sizing: border-box;
 }
 
-
 /* =====================================================
    ✨ BARRA DE NAVEGAÇÃO ao rolar
    ===================================================== */
 .site-header.rolando {
   box-shadow: 0 3px 12px rgba(0,0,0,.25);
-  background: rgba(111, 22, 16, .97) !important;
+  background: rgba(89, 20, 20, .97) !important;
   backdrop-filter: blur(6px);
   transition: all .2s ease;
 }
-
 
 /* =====================================================
    ⚡ APARECER RÁPIDO
@@ -635,18 +579,15 @@ img, .container, section, .card {
   transition: opacity .35s ease-out, transform .35s ease-out;
 }
 
-
 .apareceu {
   opacity: 1;
   transform: translateY(0);
 }
 
-
 /* Cards aparecem em sequência */
 .card:nth-child(2) { transition-delay: .08s; }
 .card:nth-child(3) { transition-delay: .16s; }
 .card:nth-child(4) { transition-delay: .24s; }
-
 
 /* =====================================================
    🛡️ BRASÃO + NOME AO LADO — efeitos
@@ -658,7 +599,6 @@ img, .container, section, .card {
   transform: translateX(4px);
 }
 
-
 .brand-mark {
   transition: transform .35s ease, filter .35s ease;
 }
@@ -666,7 +606,6 @@ img, .container, section, .card {
   transform: scale(1.15) rotate(-5deg);
   filter: drop-shadow(0 4px 8px rgba(0,0,0,.35));
 }
-
 
 .brand-text {
   transition: all .35s ease;
@@ -680,7 +619,6 @@ img, .container, section, .card {
   text-shadow: 0 0 10px rgba(205,167,79,.35);
 }
 
-
 /* =====================================================
    📦 CAIXA DA FOTO — efeitos
    ===================================================== */
@@ -692,7 +630,6 @@ img, .container, section, .card {
   box-shadow: 0 12px 35px rgba(111, 22, 16, .55), inset 0 0 0 1px rgba(205,167,79,.3);
   border-color: var(--ouro-brilhante);
 }
-
 
 .home-hero-box-inner:hover h1 {
   color: var(--dourado-claro);
